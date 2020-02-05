@@ -1,0 +1,36 @@
+
+<div class="container">
+	<div class="row">
+		<h1 class="text-center">My Account</h1>
+		<div class="col-lg-3">
+		    <div class="panel panel-primary">
+		        <div class="panel-heading">
+		            <div class="panel-title text-center">{{$root.authUser.name}}</div>
+		        </div>
+
+		        <div class="navbar-default sidebar" role="navigation">
+		            <div class="sidebar-nav navbar-collapse">
+		                <ul class="nav in" id="side-menu">
+					      <li ng-class="{active: currentTab == 0}"><a href="" ng-click="setTab(0)" class="text-center">Settings</a></li>
+					      <li ng-class="{active: currentTab == 1}"><a href="" ng-click="setTab(1)" class="text-center">Tab 2</a></li>
+		                </ul>
+		            </div>
+		            <!-- /.sidebar-collapse -->
+
+		        </div> 
+		    </div>			
+		</div>
+		<div class="col-lg-9">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<div ng-if="currentTab == 0" class="panel-title text-center">Settings</div>
+					<div ng-if="currentTab == 1" class="panel-title text-center">Tab 2</div>
+				</div>
+				<div ng-if="currentTab == 0" ng-include="'/views/account/profile.html'" class="panel-body"></div>
+				<div ng-if="currentTab == 1" class="panel-body">
+					<p>tab2</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

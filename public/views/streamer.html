@@ -1,0 +1,101 @@
+<h1 ng-if="streamerData == null" class="text-center">This streamer is currently not being tracked.</h1>
+<row ng-if="streamerData != null">
+	<h1 class="text-center">{{streamerData.channel.name}}'s Stats</h1>
+	<div class="col-lg-12">
+		<button ng-disabled="chartSelectOption==1" ng-click="chartSelect(1)">24 Hours</button>
+		<button ng-disabled="chartSelectOption==2" ng-click="chartSelect(2)">1 Week</button>
+		<button ng-disabled="chartSelectOption==3" ng-click="chartSelect(3)">1 Month</button>
+		<button ng-disabled="chartSelectOption==4" ng-click="chartSelect(4)">All Time</button>
+		<am-chart id="dataChart" options="amChartOptions" height="500px" width="100%"></am-chart>
+	</div>
+	<br>
+</row>
+<row ng-if="streamerData != null">
+	<div class="col-lg-8">
+		<h2 class="text-center">Game Breakdown</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<td style="width: 50px;">Game Name</td>
+					<td style="width: 50px;">Time Played</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="gameData in streamerData.gameData track by $index">
+					<td>{{gameData.name}}</td>
+					<td>{{gameData.playtime}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-lg-4">
+		<h2 class="text-center">Streamer Stats</h2>
+		<table class="table">
+			<tbody>
+				<tr>
+					<td>Average Viewers in last 7 Days</td>
+					<td>{{streamerData.stats.avgViewersWeek}}</td>
+				</tr>
+				<tr>
+					<td>Average Stream Length in last 7 Days</td>
+					<td>{{streamerData.stats.avgStreamLengthWeek}}</td>
+				</tr>
+				<tr>
+					<td>Total Stream Length in last 7 Days</td>
+					<td>{{streamerData.stats.totalStreamTimeWeek}}</td>
+				</tr>
+				<tr>
+					<td>Average Viewers in last 30 Days</td>
+					<td>{{streamerData.stats.avgViewersMonth}}</td>
+				</tr>
+				<tr>
+					<td>Average Stream Length in last 30 Days</td>
+					<td>{{streamerData.stats.avgStreamLengthMonth}}</td>
+				</tr>
+				<tr>
+					<td>Total Stream Length in last 30 Days</td>
+					<td>{{streamerData.stats.totalStreamTimeMonth}}</td>
+				</tr>
+				<tr>
+					<td>All-Time Average Viewers</td>
+					<td>{{streamerData.stats.avgViewersAll}}</td>
+				</tr>
+				<tr>
+					<td>All-Time Peak Viewers</td>
+					<td>{{streamerData.stats.peakViewers}}</td>
+				</tr>
+				<tr>
+					<td>All-Time Average Stream Length</td>
+					<td>{{streamerData.stats.avgStreamLengthAll}}</td>
+				</tr>
+				<tr>
+					<td>All-Time Total Stream Length</td>
+					<td>{{streamerData.stats.totalStreamTimeAll}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<h2 class="text-center">Latest Streams</h2>
+		<table class="table">
+			<tbody>
+				<tr>
+					<stream-card ng-if="streamData.length >= 1" data="streamData[0]"></stream-card>
+				</tr>
+				<tr>
+					<stream-card ng-if="streamData.length >= 2" data="streamData[1]"></stream-card>
+				</tr>
+				<tr>
+					<stream-card ng-if="streamData.length >= 3" data="streamData[2]"></stream-card>
+				</tr>
+				<tr>
+					<stream-card ng-if="streamData.length >= 4" data="streamData[3]"></stream-card>
+				</tr>
+				<tr>
+					<stream-card ng-if="streamData.length >= 5" data="streamData[4]"></stream-card>
+				</tr>
+				<tr>
+					<a style="width: 100%" class="text-center" ng-if="streamData.length >= 1" href="./streamer/{{id}}/streams">View All Streams</a>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</row>

@@ -1,0 +1,64 @@
+<style>
+
+input[type=text]#searchBar:focus {
+    width: 250px;
+    border-bottom: 1px solid #ccc;
+}
+
+input[type=text]#searchBar {
+    width: 250px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url(./img/searchicon.png);
+    background-position: 10px 7px;
+    background-repeat: no-repeat;
+    padding: 6px 6px 6px 40px;
+    -webkit-transition: width .4s ease-in-out;
+    transition: width .4s ease-in-out;
+}
+
+#results{
+	background-color: white;
+	position: absolute;
+	width: 100%;
+	border: 2px solid #ccc;
+	border-top: none;
+	z-index: 1;
+}
+
+.search-logo-small{
+	width: 50px;
+	display: inline;
+	float: left;
+}
+
+</style>
+
+<div>
+	<input id="searchBar" type="text" name="search" ng-model="searchInput" ng-change="query()" ng-focus="focus=true" ng-blur="focus=false" placeholder="Search...">
+	<div id="results" ng-if="focus == true || hover == true" ng-mouseover="hoverOnMenu()" ng-mouseleave="hoverOffMenu()">
+		<div>
+			<p class="text-center" ng-if="games != null && games.length > 0">Games</p>
+			<div style="height: 70px; border-top: 1px solid #ccc;" ng-repeat="game in games track by $index">
+				<a style="height: 100%" href="./game/{{game._id}}">
+					<img class="search-logo-small" ng-src="{{game.box.small}}">
+					<p class="text-center" style="padding-top: 25px;">{{game.name}}</p>
+				</a>
+			</div>
+		</div>
+		<div>
+			<p class="text-center" ng-if="streamers != null && streamers.length > 0">Channels</p>
+			<div style="height: 51px; border-top: 1px solid #ccc;" ng-repeat="streamer in streamers track by $index">
+				<a href="./streamer/{{streamer._id}}">
+					<img class="search-logo-small" ng-src="{{streamer.logo}}">
+					<p class="text-center" style="padding-top: 15px;">{{streamer.display_name}}</p>
+				</a>
+			</div>
+			
+		</div>
+	</div>
+</div>

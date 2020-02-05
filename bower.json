@@ -1,0 +1,17 @@
+{
+  "name": "MeanBoilerplate",
+  "version": "0.0.0",
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "font-awesome": "fontawesome#~4.4.0",
+    "angular-bootstrap": "~0.13.4",
+    "angular-route": "~1.4.7",
+    "angular": "~1.4.7",
+    "oclazyload": "~1.0.6",
+    "amcharts-angular": "^1.1.0",
+    "moment": "^2.18.1",
+    "d3": "^4.11.0"
+  },
+  "devDependencies": {},
+  "appPath": "public"
+}

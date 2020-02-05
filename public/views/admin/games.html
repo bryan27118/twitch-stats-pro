@@ -1,0 +1,47 @@
+<div class="row">
+	<div class="col-lg-8">
+		<form ng-submit="createGame()" name="form" role="form">
+					<div class="form-group">
+						<label for="gameName">Name: </label>
+						<input type="text" name="gameName" ng-model="newGame.name" class="form-control" required/>
+					</div>
+					<div class="form-actions">
+						<button type="submit" class="btn btn-primary" ng-disabled="form.$invalid || dataLoading">Create</button>
+		      			<img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+		      			<div ng-if="success.length > 0" class="alert alert-success">{{success}}</div>
+		      			<div ng-if="error.length > 0" class="alert alert-danger">{{error}}</div>
+					</div>
+				</form>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-8">
+		<table class="table">
+			<thead>
+				<tr>
+					<td style="width: 50px;">#</td>
+					<td>Icon</td>
+					<td>Name</td>
+					<td>Game ID</td>
+					<td>Popularity</td>
+					<td>Channels</td>
+					<td>Viewers</td>
+					<td style="width: 50px;">Delete</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="game in games track by $index">
+					<td style="width: 50px;">{{$index+1}}</td>
+					<td><a href="./game/{{game.gameID}}"><img ng-src="{{game.icon.small}}"></a></td>
+					<td>{{game.name}}</td>
+					<td>{{game.gameID}}</td>
+					<td>{{game.popularity}}</td>
+					<td>{{game.channels}}</td>
+					<td>{{game.viewers}}</td>
+					<td style="width: 50px;"><button class="btn" ng-click="deleteGame($index)">Delete</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

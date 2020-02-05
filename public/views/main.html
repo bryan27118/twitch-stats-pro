@@ -1,0 +1,35 @@
+<div class="row" style="margin-left: 25px;">
+	<h1 class="text-center">Games</h1>
+	<div ng-repeat="game in games track by $index">
+		<div class="col-lg-2" style="width: 200px;">
+			<div class="panel panel-default" style="width: 168px;">
+				<div class="panel-heading text-center" style="height: 60px;">{{game.name}} </div>
+				<div class="panel-body">
+					<a href="./game/{{game.gameID}}"><img ng-src="{{game.icon.medium}}"></a>
+				</div>
+			</div>
+		</div>
+		<div class="w-100" ng-if="$index%5 == 0"></div>
+	</div>
+</div>
+<div class="row text-center" style="margin-left: 25px;">
+	<button class="btn btn-primary" ng-hide="endOfGames" ng-click="fetchMoreGames()">View More</button>
+</div>
+<div class="row" style="margin-left: 25px;">
+	<h1 class="text-center">Streamers</h1>
+	<div ng-repeat="streamer in streamers track by $index">
+		<div class="col-lg-2" style="width: 200px;">
+			<div class="panel panel-default" style="width: 168px;">
+				<div class="panel-heading text-center" style="height: 60px;">{{streamer.channel.name}} </div>
+				<div class="panel-body">
+					<a href="./streamer/{{streamer.streamerID}}"><img style="height: 135px;" ng-src="{{streamer.channel.logo}}"></a>
+				</div>
+			</div>
+		</div>
+		<div class="w-100" ng-if="$index%5 == 0"></div>
+	</div>
+	<div class="w-100" ng-if="$index%5 == 0"></div>
+</div>
+<div class="row text-center" style="margin-left: 25px; margin-bottom: 100px;">
+	<button class="btn btn-primary" ng-hide="endOfStreamers" ng-click="fetchMoreStreamers()">View More</button>
+</div>

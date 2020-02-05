@@ -1,0 +1,93 @@
+<h1 ng-if="gameInfo == null" class="text-center">This game is currently not being tracked.</h1>
+<row ng-if="gameInfo != null">
+	<h1 class="text-center">{{gameInfo.name}} Stats</h1>
+	<div class="col-lg-12">
+		<button ng-disabled="chartSelectOption==1" ng-click="chartSelect(1)">24 Hours</button>
+		<button ng-disabled="chartSelectOption==2" ng-click="chartSelect(2)">1 Week</button>
+		<button ng-disabled="chartSelectOption==3" ng-click="chartSelect(3)">1 Month</button>
+		<button ng-disabled="chartSelectOption==4" ng-click="chartSelect(4)">All Time</button>
+		<am-chart id="dataChart" options="amChartOptions" height="500px" width="100%"></am-chart>
+	</div>
+	<div class="col-lg-6">
+		<br>
+		<h4 class="text-center">Viewer Stats</h4>
+		<table class="table" style="margin-left: 100px; margin-right: 20px; width: 500px;">
+			<tbody>
+				<tr>
+					<td>Average Viewers in last 24 hours</td>
+					<td>{{gameInfo.stats.avgViewersDay}}</td>
+				</tr>
+				<tr>
+					<td>Average Viewers in last 7 Days</td>
+					<td>{{gameInfo.stats.avgViewersWeek}}</td>
+				</tr>
+				<tr>
+					<td>Average Viewers in last 30 Days</td>
+					<td>{{gameInfo.stats.avgViewersMonth}}</td>
+				</tr>
+				<tr>
+					<td>All-Time Peak Viewers</td>
+					<td>{{gameInfo.stats.peakViewers.value}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-lg-6">
+		<br>
+		<h4 class="text-center">Channel Stats</h4>
+		<table class="table" style="margin-left: 100px; margin-right: 20px; width: 500px;">
+			<tbody>
+				<tr>
+					<td>Average Live Channels in last 24 hours</td>
+					<td>{{gameInfo.stats.avgChannelsDay}}</td>
+				</tr>
+				<tr>
+					<td>Average Live Channels in last 7 Days</td>
+					<td>{{gameInfo.stats.avgChannelsWeek}}</td>
+				</tr>
+				<tr>
+					<td>Average Live Channels in last 30 Days</td>
+					<td>{{gameInfo.stats.avgChannelsMonth}}</td>
+				</tr>
+				<tr>
+					<td>All-Time Peak Live Channels</td>
+					<td>{{gameInfo.stats.peakChannels.value}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+</row>
+<row ng-if="gameInfo != null">
+	<div class="col-lg-8">
+		<h2 class="text-center">Current Streamer Breakdown</h2>
+		<am-chart id="breakdownPie" options="breakdownChartOptions" height="380px" width="100%"></am-chart>
+	</div>
+	<div class="col-lg-4">
+		<h3 class="text-center">Most Viewed Streamers</h3>
+		<table class="table">
+			<tbody>
+				<tr>
+					<td>#1</td>
+					<td><a target="_blank" href="https://twitch.tv/{{gameInfo.topStreamers[0].channel}}">{{gameInfo.topStreamers[0].channel}}</a></td>
+				</tr>
+				<tr>
+					<td>#2</td>
+					<td><a target="_blank" href="https://twitch.tv/{{gameInfo.topStreamers[1].channel}}">{{gameInfo.topStreamers[1].channel}}</a></td>
+				</tr>
+				<tr>
+					<td>#3</td>
+					<td><a target="_blank" href="https://twitch.tv/{{gameInfo.topStreamers[2].channel}}">{{gameInfo.topStreamers[2].channel}}</a></td>
+				</tr>
+				<tr>
+					<td>#4</td>
+					<td><a target="_blank" href="https://twitch.tv/{{gameInfo.topStreamers[3].channel}}">{{gameInfo.topStreamers[3].channel}}</a></td>
+				</tr>
+				<tr>
+					<td>#5</td>
+					<td><a target="_blank" href="https://twitch.tv/{{gameInfo.topStreamers[4].channel}}">{{gameInfo.topStreamers[4].channel}}</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</row>

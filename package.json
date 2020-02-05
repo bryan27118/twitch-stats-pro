@@ -1,0 +1,21 @@
+{
+  "name": "MeanBoilerplate",
+  "main": "server.js",
+  "dependencies": {
+    "bcrypt-nodejs": "*",
+    "body-parser": "~1.4.2",
+    "express": "~4.5.1",
+    "express-session": "*",
+    "jade": "*",
+    "method-override": "~2.0.2",
+    "mongoose": "~4.4",
+    "newrelic": "^2.2.0",
+    "nodemailer": "*",
+    "passport": "*",
+    "passport-local": "*",
+    "prerender-node": "*",
+    "twitch-api": "^0.5.0",
+    "twitch-toolkit": "0.0.10",
+    "webworker-threads": "^0.7.17"
+  }
+}

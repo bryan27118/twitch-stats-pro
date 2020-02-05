@@ -1,0 +1,56 @@
+<h1 ng-if="streamData == null" class="text-center">This stream is currently not being tracked.</h1>
+<row ng-if="streamData != null">
+	<h1 class="text-center">{{streamData.title}}</h1>
+	<h3 class="text-center">Game: {{streamData.game}}</h3>
+	<div class="col-lg-8">
+		<am-chart id="dataChart" options="amChartOptions" height="500px" width="100%"></am-chart>
+	</div>
+	<div class="col-lg-4">
+		<div style="width: 100%; border: 1px solid black; height: 50px">
+			<a ng-if="streamData.live == false" target="_blank" style="display: block; margin-top: -10px; height: 100%; width: 100%; background-image: url('{{streamData.thumbnail}}'); background-position: center;" href="https://www.twitch.tv/videos/{{streamData.videoID}}">
+				<h4 class="text-center" style="padding-top: 15px; color: white;">Watch VOD</h4>
+			</a>
+			<a ng-if="streamData.live == true" target="_blank" style="display: block; margin-top: -10px; height: 100%; width: 100%; background-image: url('{{streamData.thumbnail}}'); background-position: center;" href="https://www.twitch.tv/{{streamData.channel}}">
+				<h4 class="text-center" style="padding-top: 15px; color: white;">Watch LIVE</h4>
+			</a>
+		</div>
+		<h2 class="text-center">Stream Stats</h2>
+		<table class="table">
+			<tbody>
+				<tr>
+					<td>Start Time</td>
+					<td>{{streamData.startTime}}</td>
+				</tr>
+				<tr>
+					<td>End Time</td>
+					<td>{{streamData.endTime}}</td>
+				</tr>
+				<tr>
+					<td>Peak Viewers</td>
+					<td>{{streamData.stats.peakViewers}}</td>
+				</tr>
+				<tr>
+					<td>Stream Length</td>
+					<td>{{streamData.stats.streamLength}}</td>
+				</tr>
+				<tr>
+					<td>Average Viewers</td>
+					<td>{{streamData.stats.avgViewers}}</td>
+				</tr>
+				<tr>
+					<td>Total Watch Time</td>
+					<td>{{streamData.stats.watchTime}}</td>
+				</tr>
+				<tr>
+					<td>New Followers</td>
+					<td>{{streamData.stats.newFollowers}}</td>
+				</tr>
+				<tr>
+					<td>New Views</td>
+					<td>{{streamData.stats.newViews}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+</row>
