@@ -8,7 +8,7 @@
     "express-session": "*",
     "jade": "*",
     "method-override": "~2.0.2",
-    "mongoose": "~4.4",
+    "mongoose": "~5.7",
     "newrelic": "^2.2.0",
     "nodemailer": "*",
     "passport": "*",
